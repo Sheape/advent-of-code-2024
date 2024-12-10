@@ -31,6 +31,8 @@ libm = cc.find_library('m', required: true)
 deps += libm
 
 sources = files('include/quicksort.c',
-                'day-1/historian-hysteria.c',
+                # 'day-1/historian-hysteria.c',
+                # 'day-2/red-nosed-reports.c',
+                'day-9/disk-fragmenter.c',
                ) # TODO: Expand this later manually
 executable(meson.project_name(), sources, dependencies: deps)
