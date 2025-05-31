@@ -34,6 +34,7 @@ fn main() {
     );
 
     println!("DAY 4 [PART 1]: XMAS occured: {} times", Day4::part1());
+    println!("DAY 4 [PART 2]: X-MAS occured: {} times", Day4::part2());
 }
 
 #[cfg(test)]

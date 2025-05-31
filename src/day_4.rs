@@ -203,8 +203,41 @@ impl Solution for Day4 {
     }
 
     fn part2() -> u32 {
-        1u32
+        let input = Path::new("input/day4.txt");
+        let contents = fs::read_to_string(input).expect("Something wrong with opening this file");
+
+        let puzzle = new_crossword(&contents);
+        let (width, height) = (puzzle[0].len(), puzzle.len());
+        let mut valid_traversals: u32 = 0;
+
+        for (i, row) in puzzle.iter().enumerate() {
+            for (j, letter) in row.iter().enumerate() {
+                if *letter == b'A' && i > 0 && j > 0 && height - i > 1 && width - j > 1 {
+                    valid_traversals += check_complement(puzzle.as_slice(), i, j) as u32;
+                }
+            }
+        }
+
+        valid_traversals
     }
+}
+
+fn check_complement(puzzle: &[&[u8]], row: usize, col: usize) -> bool {
+    let first_match = match puzzle[row - 1][col - 1] {
+        b'M' => puzzle[row + 1][col + 1] == b'S',
+        b'S' => puzzle[row + 1][col + 1] == b'M',
+        _ => return false,
+    };
+
+    if first_match {
+        match puzzle[row - 1][col + 1] {
+            b'M' => return puzzle[row + 1][col - 1] == b'S',
+            b'S' => return puzzle[row + 1][col - 1] == b'M',
+            _ => return false,
+        };
+    }
+
+    false
 }
 
 fn new_crossword(puzzle: &str) -> Vec<&[u8]> {
