@@ -16,7 +16,9 @@ fn check_line(line: &[u8]) -> bool {
     let is_increasing = line[0] < line[1];
 
     for window in line.windows(2) {
-        let (first, second): (u8, u8) = (window[0], window[1]);
+        let [first, second] = *window else {
+            return false; // This should never happen, but just in case
+        };
 
         if (first < second) != is_increasing || first == second || first.abs_diff(second) > 3 {
             return false;
