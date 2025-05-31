@@ -1,11 +1,13 @@
 mod day_1;
 mod day_2;
 mod day_3;
+mod day_4;
 mod solution;
 
 use day_1::Day1;
 use day_2::Day2;
 use day_3::Day3;
+use day_4::Day4;
 
 pub use solution::Solution;
 
@@ -30,6 +32,8 @@ fn main() {
         "DAY 3 [PART 2]: The result of multiplications is: {}",
         Day3::part2()
     );
+
+    println!("DAY 4 [PART 1]: XMAS occured: {} times", Day4::part1());
 }
 
 #[cfg(test)]
@@ -59,5 +63,10 @@ mod test {
     #[test]
     fn test_day_3_part_2() {
         assert_eq!(Day3::part2(), 113965544)
+    }
+
+    #[test]
+    fn test_day_4_part_1() {
+        assert_eq!(Day4::part1(), 2654)
     }
 }
