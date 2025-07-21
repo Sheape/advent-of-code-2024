@@ -2,6 +2,7 @@ mod day_1;
 mod day_2;
 mod day_3;
 mod day_4;
+mod day_5;
 mod solution;
 
 use day_1::Day1;
@@ -10,6 +11,8 @@ use day_3::Day3;
 use day_4::Day4;
 
 pub use solution::Solution;
+
+use crate::day_5::Day5;
 
 fn main() {
     println!("DAY 1 [PART 1]: The total distance is: {}", Day1::part1());
@@ -35,6 +38,11 @@ fn main() {
 
     println!("DAY 4 [PART 1]: XMAS occured: {} times", Day4::part1());
     println!("DAY 4 [PART 2]: X-MAS occured: {} times", Day4::part2());
+
+    println!(
+        "DAY 5 [PART 1]: The sum of the middle of valid updates is: {}",
+        Day5::part1()
+    );
 }
 
 #[cfg(test)]
@@ -69,5 +77,15 @@ mod test {
     #[test]
     fn test_day_4_part_1() {
         assert_eq!(Day4::part1(), 2654)
+    }
+
+    #[test]
+    fn test_day_4_part_2() {
+        assert_eq!(Day4::part2(), 1990)
+    }
+
+    #[test]
+    fn test_day_5_part_1() {
+        assert_eq!(Day5::part1(), 6384)
     }
 }
